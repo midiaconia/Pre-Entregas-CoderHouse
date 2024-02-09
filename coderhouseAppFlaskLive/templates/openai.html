@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jorge's OpenAI Assistant</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar__brand">
+      <a  href="/"><img class="navbar__logo" src="/static/logo.png" alt="The Microblog logo" /></a>AI PPT Builder
+    </div>
+    <ul class="navbar__navigation">
+      <li class="navbar__navigation-item">
+        <a href="#" class="navbar__link">Recent</a>
+      </li>
+      <li class="navbar__navigation-item">
+        <a href="#" class="navbar__link">Calendar</a>
+      </li>
+    </ul>
+  </header>
+  <main class="main">
+    <section>
+      <h1>Let's build your presentation</h1>
+      <form class="form" method="POST">
+        <p class="form__input">
+          <label for="topic" class="form__label">Write your topic:</label>
+          <textarea name="ppt_topic" id="ppt_topic" class="form__textarea" required></textarea>
+        </p>
+        <p class="form__input">
+          <label for="slides" class="form__label">Number of slides (max. 08):</label>
+          <input type="number" name="ppt_slides" id="ppt_slides" class="form__textarea" required min="1" max="8">
+        </p>
+        <button type="submit" class="form__submit">Add request</button>
+        {% if lista_ideas %}
+          <div class="lista_ideas">
+              <h2>Ideas for Your Presentation:</h2>
+              <p>{{ lista_ideas }}</p>
+          </div>
+        {% endif %}
+      </form>
+    </section>
+    <section>
+      <h1>Recent generations</h1>
+      {% for entry in entries %}
+        <article class="entry">
+          <div>
+            <h2 class="entry__title">{{ entry[0] | truncate(30,true) }}</h2>
+            <time class="entry__date"> • {{ entry[3] }} | {{ entry[1] }} slides</time>
+          </div>
+          <p class="entry__content">
+            {{ entry[4] + ' [...]' }}
+            <br><br> <!-- Add a line break here to ensure the link is on a new line -->
+            <a href="{{ url_for('show_entry', entry_id=entry[5]) }}" class="details__link">Full Details</a>
+          </p>
+        </article>
+      {% endfor %}
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer__content">
+      <section class="left">
+        <a class="footer__item" href="https://www.linkedin.com/in/hazloconia/">Made by Jorge Orihuela</a>
+        <a class="footer__item">Check out my other projects</a>
+      </section>
+      <section class="right">
+        <div class="footer__column">
+          <a class="footer__item">Recent</a>
+          <a class="footer__item">Calendar</a>
+        </div>
+        <div class="footer__column">
+          <a class="footer__item" href="#">About</a>
+          <a class="footer__item">How this was made</a>
+        </div>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>

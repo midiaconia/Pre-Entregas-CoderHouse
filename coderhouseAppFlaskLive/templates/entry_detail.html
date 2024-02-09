@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ entry['ppt_topic'] }}</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+    <main class="main">
+        <article class="entry">
+            <h1>{{ entry['ppt_topic'] }}</h1>
+            <p>Number of Slides: {{ entry['ppt_slides'] }}</p>
+            <h2>Slides Overview:</h2>
+            <ul>
+                {% for idea in entry['ideas_list'] %}
+                    <li>{{ idea }}</li>
+                {% endfor %}
+            </ul>
+            <h2>Content Ideas:</h2>
+            {% if entry['content_ideas'] %}
+                <ul>
+                    {% for content_idea in entry['content_ideas'] %}
+                        <li>
+                            <strong>{{ content_idea['title'] }}:</strong>
+                            <ul>
+                                {% for idea in content_idea['ideas'] %}
+                                    {% if idea|trim %}
+                                        <li>{{ idea }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No content ideas generated.</p>
+            {% endif %}
+            <h2>VBA Code for PowerPoint:</h2>
+            {% if entry['vba_code'] %}
+                <pre>{{ entry['vba_code'] }}</pre>
+            {% else %}
+                <p>No VBA code generated.</p>
+            {% endif %}
+        </article>
+
+        <div class="return__button">
+            <a href="/" class="return__link">Return</a>
+        </div>
+    </main>
+</body>
+</html>
