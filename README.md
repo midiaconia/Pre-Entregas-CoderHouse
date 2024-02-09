@@ -21,7 +21,9 @@ Como un plus personal, desarrollé en los últimos días una interfaz con HTML, 
 
 En un entorno local con Visual Studio Code, utilizando un `.venv` y la función `flask run` se obtuvo los resultados mostrados en /coderhouseAppFlaskLive/demoImg/ demostrándose que efectivamente el código fue eficiente y, además de generar un histórico de las últimas generaciones, permite también generar una vista independiente por cada resultado llevando al usuario a una URL del tipo XXX.0.0.1:XXXX/entry/<entry_id>, desde donde podría verificar y copiar toda la información referente a su presentación; los datos se guardan en una BD en MongoDB ya que las generaciones guardadas en la memoria de Python se eliminaban cada vez que se reiniciaba la Flask App.
 
-Pese a que lo que funcionó en el entorno local no terminó de funcionar en vivo, comparto el link donde se aprecia la interfaz: <a href="https://python-web-coderhouse-flask-live.onrender.com">https://python-web-coderhouse-flask-live.onrender.com</a> (este link será retirado automáticamente en 6 días, es decir, el 14/02/2024); fue un gran reto programar la app y aunque todavía no logro entender por qué al momento de enviar la consulta se genera un error interno del tipo 502, seguiré practicando hasta conseguir el objetivo.
+Pese a que lo que funcionó en el entorno local no terminó de funcionar en vivo, comparto el link donde se aprecia la interfaz: <a href="https://python-web-coderhouse-flask-live.onrender.com">https://python-web-coderhouse-flask-live.onrender.com</a> (este link será retirado automáticamente en 6 días, es decir, el 14/02/2024); actualmente, ya que tanto el entorno local como la app en render.com están pobladas con datos de la misma BD desde MongoDB se pueden apreciar dos consultas que generé previamente, pero no se pueden agregar más de manera manual a través de la interfaz.
+
+Fue un gran reto programar la Flask app y aunque todavía no logro entender por qué al momento de enviar la consulta se genera un error interno del tipo 502, seguiré practicando hasta conseguir el objetivo.
 
 Todo lo demás se encuentra explicado dentro del mismo archivo "preEntrega1-2v3.0.ipynb", incluyendo:
 - Objetivos
